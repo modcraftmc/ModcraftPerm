@@ -20,7 +20,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ModcraftPermCommandDispatcher {
 
-    public static void Register(CommandDispatcher<CommandSource> dispatcher){
+    private static final CommandDispatcher<CommandSource> COMMANDS_DISPATCHER = new CommandDispatcher();
+
+    public static void registerServer(CommandDispatcher<CommandSource> dispatcher){
         dispatcher.register(Commands.literal("mperm")
                 .then(Commands.literal("delete-buffers")
                     .executes(context -> deleteBuffers(context.getSource())))
@@ -28,8 +30,6 @@ public class ModcraftPermCommandDispatcher {
                     .executes(context -> loadBuffers(context.getSource())))
                 .then(Commands.literal("reload-config")
                     .executes(context -> reloadConfig()))
-                .then(Commands.literal("interface")
-                        .executes(context -> test(context.getSource())))
                 .then(Commands.literal("list")
                     .then(Commands.literal("group")
                         .executes(context -> listGroups(context.getSource()))
@@ -73,6 +73,13 @@ public class ModcraftPermCommandDispatcher {
                                 .then(Commands.literal("toGroup")
                                     .then(Commands.argument("group",StringArgumentType.string())
                                         .executes(context -> delPermToGroup(context.getSource(), StringArgumentType.getString(context,"permArgument"), StringArgumentType.getString(context,"group"))))))))
+        );
+    }
+
+    public static void registerClient(){
+        COMMANDS_DISPATCHER.register(Commands.literal("mperm")
+                .then(Commands.literal("interface")
+                        .executes(context -> test(context.getSource())))
         );
     }
 

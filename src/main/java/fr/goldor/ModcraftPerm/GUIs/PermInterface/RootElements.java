@@ -17,6 +17,5 @@ public class RootElements {
     public static void addGroup(String name,String[] perms){
         //todo: send packet to server to change database permissions
         groups.add(new Group(name, Arrays.asList(perms)));
-        FurnaceScreen
     }
 }

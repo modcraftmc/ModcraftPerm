@@ -96,8 +96,8 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.16.4-35.1.32'
 
-    compile group: 'com.google.code.gson', name: 'gson', version:'2.7'
-    compile 'mysql:mysql-connector-java:8.0.21' // change to .23
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'mysql:mysql-connector-java:8.0.23'
 
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
